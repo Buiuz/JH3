@@ -27,18 +27,72 @@
             </div>
 
             <button class="nav-toggle" aria-controls="primary-navigation" aria-expanded="false" aria-label="Abrir menu">
-                <i data-lucide="menu" aria-hidden="true"></i>
-                <span class="visually-hidden">Abrir menu</span>
-            </button>
+                <span class="hamburger" aria-hidden="true">
+        <!-- Mobile menu toggle + cards carousel (Lucide CDN removed; icons are inline SVGs) -->
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const btn = document.querySelector('.nav-toggle');
+                const nav = document.getElementById('primary-navigation');
+                if (btn && nav) {
+                    const closeNav = () => {
+                        btn.setAttribute('aria-expanded', 'false');
+                        btn.classList.remove('open');
+                        nav.classList.remove('show');
+                    };
 
+                    btn.addEventListener('click', (ev) => {
+                        ev.stopPropagation();
+                        const expanded = btn.getAttribute('aria-expanded') === 'true';
+                        btn.setAttribute('aria-expanded', String(!expanded));
+                        btn.classList.toggle('open');
+                        nav.classList.toggle('show');
+                    });
             <nav id="primary-navigation" class="nav-links" role="navigation">
+                    // close when clicking outside
+                    document.addEventListener('click', (e) => {
+                        if (!nav.contains(e.target) && !btn.contains(e.target) && nav.classList.contains('show')) {
+                            closeNav();
+                        }
+                    });
                 <a href="#sobre">SOBRE</a>
+                    // close on ESC
+                    document.addEventListener('keydown', (e) => {
+                        if (e.key === 'Escape') closeNav();
+                    });
+                }
                 <a href="#servicos">SERVIÇOS</a>
+                // Services auto-rotate highlight
+                (function () {
+                    const grid = document.querySelector('.services-grid');
+                    if (!grid) return;
+                    const cards = Array.from(grid.querySelectorAll('.service-card'));
+                    if (!cards.length) return;
                 <a href="#diagnostico">DIAGNÓSTICO</a>
+                    let current = cards.findIndex(c => c.classList.contains('is-active'));
+                    if (current < 0) current = 0;
                 <a href="#galeria">GALERIA</a>
+                    let timer = null;
+                    const next = () => {
+                        cards[current].classList.remove('is-active');
+                        current = (current + 1) % cards.length;
+                        cards[current].classList.add('is-active');
+                    };
                 <a href="#contato">CONTATO</a>
+                    const start = () => {
+                        stop();
+                        timer = setInterval(next, 6000);
+                    };
+                    const stop = () => {
+                        if (timer) { clearInterval(timer); timer = null; }
+                    };
             </nav>
+                    grid.addEventListener('mouseenter', stop);
+                    grid.addEventListener('mouseleave', start);
         </div>
+                    start();
+                })();
+            });
+        </script>
     </header>
 
     <!-- HERO -->
@@ -185,7 +239,12 @@
                 <div class="services-grid">
                     <!-- Revisão -->
                     <article class="service-card">
-                        <div class="service-icon"><i class="lucide-icon" data-lucide="refresh-ccw" aria-hidden="true"></i></div>
+                        <div class="service-icon">
+                            <svg class="lucide-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M21 12a9 9 0 1 0-9 9" />
+                                <polyline points="21 3 21 9 15 9" />
+                            </svg>
+                        </div>
                         <h3 class="service-title">REVISÃO COMPLETA</h3>
                         <p class="service-desc">
                             Revisão preventiva para evitar panes na água e manter o equipamento sempre pronto.
@@ -200,7 +259,12 @@
 
                     <!-- Manutenção mecânica -->
                     <article class="service-card">
-                        <div class="service-icon"><i class="lucide-icon" data-lucide="wrench" aria-hidden="true"></i></div>
+                        <div class="service-icon">
+                            <svg class="lucide-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M14.7 10.3a4 4 0 0 0-5.6 5.6L4 21l3-3 7-7z" />
+                                <path d="M20.7 7.3a4 4 0 0 0-5.6-5.6" />
+                            </svg>
+                        </div>
                         <h3 class="service-title">MANUTENÇÃO MECÂNICA</h3>
                         <p class="service-desc">
                             Reparos mecânicos desde ajustes simples até intervenções estruturais de motor.
@@ -215,7 +279,11 @@
 
                     <!-- Elétrica / Eletrônica -->
                     <article class="service-card">
-                        <div class="service-icon"><i class="lucide-icon" data-lucide="zap" aria-hidden="true"></i></div>
+                        <div class="service-icon">
+                            <svg class="lucide-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M13 2L3 14h7l-1 8 10-12h-7z" />
+                            </svg>
+                        </div>
                         <h3 class="service-title">ELÉTRICA & DIAGNÓSTICO</h3>
                         <p class="service-desc">
                             Diagnóstico eletrônico avançado e correção de problemas elétricos difíceis de achar.
@@ -230,7 +298,11 @@
 
                     <!-- Estética -->
                     <article class="service-card">
-                        <div class="service-icon"><i class="lucide-icon" data-lucide="star" aria-hidden="true"></i></div>
+                        <div class="service-icon">
+                            <svg class="lucide-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <polygon points="12 2 15 9 22 9 17 14 19 21 12 17 5 21 7 14 2 9 9 9 12 2" />
+                            </svg>
+                        </div>
                         <h3 class="service-title">REFORMAS & ESTÉTICA</h3>
                         <p class="service-desc">
                             Seu jet ski com cara de novo: polimento, detalhamento e pequenas reformas visuais.
@@ -245,7 +317,12 @@
 
                     <!-- Peças & upgrades -->
                     <article class="service-card">
-                        <div class="service-icon"><i class="lucide-icon" data-lucide="package" aria-hidden="true"></i></div>
+                        <div class="service-icon">
+                            <svg class="lucide-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M21 16V8a2 2 0 0 0-1-1.7L13 3 4 6.3A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.7L11 21l9-3.3A2 2 0 0 0 21 16z" />
+                                <path d="M12 3v7" />
+                            </svg>
+                        </div>
                         <h3 class="service-title">PEÇAS & UPGRADES</h3>
                         <p class="service-desc">
                             Reposição de componentes com foco em confiabilidade e upgrades sob medida.
@@ -259,7 +336,12 @@
 
                     <!-- Barcos & lanchas -->
                     <article class="service-card is-active">
-                        <div class="service-icon"><i class="lucide-icon" data-lucide="boat" aria-hidden="true"></i></div>
+                        <div class="service-icon">
+                            <svg class="lucide-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M3 17s4 4 9 4 9-4 9-4-4-1-9-1-9 1-9 1z" />
+                                <path d="M7 17V10l5-3v10" />
+                            </svg>
+                        </div>
                         <h3 class="service-title">BARCOS & LANCHAS</h3>
                         <p class="service-desc">
                             Além dos jets, cuidamos do seu barco ou lancha com a mesma atenção aos detalhes.
@@ -273,7 +355,12 @@
 
                     <!-- Inspeção preventiva (extra) -->
                     <article class="service-card">
-                        <div class="service-icon"><i class="lucide-icon" data-lucide="search" aria-hidden="true"></i></div>
+                        <div class="service-icon">
+                            <svg class="lucide-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <circle cx="11" cy="11" r="6" />
+                                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                            </svg>
+                        </div>
                         <h3 class="service-title">INSPEÇÃO PREVENTIVA</h3>
                         <p class="service-desc">
                             Checagem completa antes da temporada: segurança, sistemas e consumíveis.
@@ -286,7 +373,13 @@
 
                     <!-- Atendimento personalizado (extra) -->
                     <article class="service-card">
-                        <div class="service-icon"><i class="lucide-icon" data-lucide="user-check" aria-hidden="true"></i></div>
+                        <div class="service-icon">
+                            <svg class="lucide-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M16 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                                <circle cx="12" cy="7" r="3" />
+                                <path d="M18 16l2 2 4-4" />
+                            </svg>
+                        </div>
                         <h3 class="service-title">ATENDIMENTO PERSONALIZADO</h3>
                         <p class="service-desc">
                             Planos e serviços adaptados ao seu uso e rotina de navegação.
@@ -449,11 +542,9 @@
         // atualiza ano automaticamente
         document.getElementById('ano-atual').textContent = new Date().getFullYear();
     </script>
-    <!-- Lucide icons CDN and initialization + mobile menu toggle + cards carousel -->
-    <script src="https://cdn.lucide.dev/lucide.min.js"></script>
+    <!-- Mobile menu toggle + cards carousel (Lucide CDN removed; icons are inline SVGs) -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            try { lucide.replace({ width: 32, height: 32 }); } catch (e) { }
 
             const btn = document.querySelector('.nav-toggle');
             const nav = document.getElementById('primary-navigation');
