@@ -19,14 +19,19 @@
     <header>
         <div class="container nav">
             <div class="nav-logo">
-                <img src="IMG/logo.png" alt="Logo Jet House Náutica" />
+                <img src="img/logo.png" alt="Logo Jet House Náutica" />
                 <div class="nav-logo-text">
                     <span>JET HOUSE</span>
                     <span>OFICINA NÁUTICA · REGIÃO DOS LAGOS</span>
                 </div>
             </div>
 
-            <nav class="nav-links">
+            <button class="nav-toggle" aria-controls="primary-navigation" aria-expanded="false" aria-label="Abrir menu">
+                <i data-lucide="menu" aria-hidden="true"></i>
+                <span class="visually-hidden">Abrir menu</span>
+            </button>
+
+            <nav id="primary-navigation" class="nav-links" role="navigation">
                 <a href="#sobre">SOBRE</a>
                 <a href="#servicos">SERVIÇOS</a>
                 <a href="#diagnostico">DIAGNÓSTICO</a>
@@ -69,7 +74,7 @@
 
                 <aside class="hero-card" aria-label="Visão geral da Jet House Náutica">
                     <div class="hero-card-main">
-                        <img src="IMG/oficina-jets-alinhados.jpg" alt="Jet skis alinhados na Jet House Náutica" />
+                        <img src="img/oficina-jets-alinhados.jpg" alt="Jet skis alinhados na Jet House Náutica" />
                         <div class="hero-card-text">
                             <h2>MANUTENÇÃO, REVISÃO E CUIDADO COMPLETO</h2>
                             <p>
@@ -152,13 +157,13 @@
                     </div>
 
                     <div class="about-gallery" aria-label="Fotos da estrutura da Jet House Náutica">
-                        <img src="IMG/oficina-frente-jets.jpg"
+                        <img src="img/oficina-frente-jets.jpg"
                             alt="Entrada da oficina Jet House Náutica com jets estacionados" />
-                        <img src="IMG/diagnostico-notebook-jet.jpg"
+                        <img src="img/diagnostico-notebook-jet.jpg"
                             alt="Notebook conectado ao jet ski para diagnóstico eletrônico" />
-                        <img src="IMG/motor-jet-aberto.jpg"
+                        <img src="img/motor-jet-aberto.jpg"
                             alt="Motor de jet ski aberto em bancada para manutenção detalhada" />
-                        <img src="IMG/quadriciclo-reboque-jet.jpg"
+                        <img src="img/quadriciclo-reboque-jet.jpg"
                             alt="Quadriciclo com reboque transportando jet ski na região dos lagos" />
                     </div>
                 </div>
@@ -180,7 +185,7 @@
                 <div class="services-grid">
                     <!-- Revisão -->
                     <article class="service-card">
-                        <div class="service-icon">RX ⚙️</div>
+                        <div class="service-icon"><i class="lucide-icon" data-lucide="refresh-ccw" aria-hidden="true"></i></div>
                         <h3 class="service-title">REVISÃO COMPLETA</h3>
                         <p class="service-desc">
                             Revisão preventiva para evitar panes na água e manter o equipamento sempre pronto.
@@ -195,7 +200,7 @@
 
                     <!-- Manutenção mecânica -->
                     <article class="service-card">
-                        <div class="service-icon">MK 🔧</div>
+                        <div class="service-icon"><i class="lucide-icon" data-lucide="wrench" aria-hidden="true"></i></div>
                         <h3 class="service-title">MANUTENÇÃO MECÂNICA</h3>
                         <p class="service-desc">
                             Reparos mecânicos desde ajustes simples até intervenções estruturais de motor.
@@ -210,7 +215,7 @@
 
                     <!-- Elétrica / Eletrônica -->
                     <article class="service-card">
-                        <div class="service-icon">EL 🧠</div>
+                        <div class="service-icon"><i class="lucide-icon" data-lucide="zap" aria-hidden="true"></i></div>
                         <h3 class="service-title">ELÉTRICA & DIAGNÓSTICO</h3>
                         <p class="service-desc">
                             Diagnóstico eletrônico avançado e correção de problemas elétricos difíceis de achar.
@@ -225,7 +230,7 @@
 
                     <!-- Estética -->
                     <article class="service-card">
-                        <div class="service-icon">FX ✨</div>
+                        <div class="service-icon"><i class="lucide-icon" data-lucide="star" aria-hidden="true"></i></div>
                         <h3 class="service-title">REFORMAS & ESTÉTICA</h3>
                         <p class="service-desc">
                             Seu jet ski com cara de novo: polimento, detalhamento e pequenas reformas visuais.
@@ -240,7 +245,7 @@
 
                     <!-- Peças & upgrades -->
                     <article class="service-card">
-                        <div class="service-icon">UP 📦</div>
+                        <div class="service-icon"><i class="lucide-icon" data-lucide="package" aria-hidden="true"></i></div>
                         <h3 class="service-title">PEÇAS & UPGRADES</h3>
                         <p class="service-desc">
                             Reposição de componentes com foco em confiabilidade e upgrades sob medida.
@@ -253,8 +258,8 @@
                     </article>
 
                     <!-- Barcos & lanchas -->
-                    <article class="service-card">
-                        <div class="service-icon">BT 🚤</div>
+                    <article class="service-card is-active">
+                        <div class="service-icon"><i class="lucide-icon" data-lucide="boat" aria-hidden="true"></i></div>
                         <h3 class="service-title">BARCOS & LANCHAS</h3>
                         <p class="service-desc">
                             Além dos jets, cuidamos do seu barco ou lancha com a mesma atenção aos detalhes.
@@ -263,6 +268,32 @@
                             <li>Manutenção de motores de popa e centro-rabeta.</li>
                             <li>Inspeção geral para segurança de navegação.</li>
                             <li>Revisão de elétrica embarcada básica.</li>
+                        </ul>
+                    </article>
+
+                    <!-- Inspeção preventiva (extra) -->
+                    <article class="service-card">
+                        <div class="service-icon"><i class="lucide-icon" data-lucide="search" aria-hidden="true"></i></div>
+                        <h3 class="service-title">INSPEÇÃO PREVENTIVA</h3>
+                        <p class="service-desc">
+                            Checagem completa antes da temporada: segurança, sistemas e consumíveis.
+                        </p>
+                        <ul class="service-list">
+                            <li>Checklist completo de segurança.</li>
+                            <li>Verificação de sistemas elétricos e mecânicos.</li>
+                        </ul>
+                    </article>
+
+                    <!-- Atendimento personalizado (extra) -->
+                    <article class="service-card">
+                        <div class="service-icon"><i class="lucide-icon" data-lucide="user-check" aria-hidden="true"></i></div>
+                        <h3 class="service-title">ATENDIMENTO PERSONALIZADO</h3>
+                        <p class="service-desc">
+                            Planos e serviços adaptados ao seu uso e rotina de navegação.
+                        </p>
+                        <ul class="service-list">
+                            <li>Consultoria técnica e recomendações de manutenção.</li>
+                            <li>Planos de revisões periódicas sob medida.</li>
                         </ul>
                     </article>
                 </div>
@@ -274,7 +305,7 @@
             <div class="container diagnostic-grid">
                 <!-- terceira imagem da galeria: diagnostico-notebook-jet.jpg -->
                 <div class="diagnostic-image">
-                    <img src="IMG/diagnostico-notebook-jet.jpg"
+                    <img src="img/diagnostico-notebook-jet.jpg"
                         alt="Diagnóstico eletrônico em jet ski com notebook conectado" />
                 </div>
                 <div class="diagnostic-text">
@@ -308,34 +339,34 @@
                 <!-- div da galeria jogada para depois do cabeçalho, com espaçamento maior -->
                 <div class="gallery-grid">
                     <figure class="gallery-item">
-                        <img src="IMG/oficina-jets-alinhados.jpg"
+                        <img src="img/oficina-jets-alinhados.jpg"
                             alt="Vários jets alinhados em área coberta na oficina" />
                         <span>ESTRUTURA COBERTA</span>
                     </figure>
 
                     <figure class="gallery-item">
-                        <img src="IMG/corredor-lagoa-jets.jpg"
+                        <img src="img/corredor-lagoa-jets.jpg"
                             alt="Jets estacionados em corredor com vista para a lagoa" />
                         <span>ACESSO À LAGOA</span>
                     </figure>
 
                     <figure class="gallery-item">
-                        <img src="IMG/diagnostico-notebook-jet.jpg" alt="Notebook realizando diagnóstico em jet ski" />
+                        <img src="img/diagnostico-notebook-jet.jpg" alt="Notebook realizando diagnóstico em jet ski" />
                         <span>DIAGNÓSTICO TÉCNICO</span>
                     </figure>
 
                     <figure class="gallery-item">
-                        <img src="IMG/motor-jet-aberto.jpg" alt="Motor de jet ski desmontado para manutenção" />
+                        <img src="img/motor-jet-aberto.jpg" alt="Motor de jet ski desmontado para manutenção" />
                         <span>MECÂNICA DETALHISTA</span>
                     </figure>
 
                     <figure class="gallery-item">
-                        <img src="IMG/oficina-frente-jets.jpg" alt="Jets estacionados na frente da Jet House Náutica" />
+                        <img src="img/oficina-frente-jets.jpg" alt="Jets estacionados na frente da Jet House Náutica" />
                         <span>OFICINA NÁUTICA</span>
                     </figure>
 
                     <figure class="gallery-item">
-                        <img src="IMG/quadriciclo-reboque-jet.jpg"
+                        <img src="img/quadriciclo-reboque-jet.jpg"
                             alt="Quadriciclo com reboque transportando jet ski" />
                         <span>OPERAÇÃO & APOIO</span>
                     </figure>
@@ -417,6 +448,74 @@
     <script>
         // atualiza ano automaticamente
         document.getElementById('ano-atual').textContent = new Date().getFullYear();
+    </script>
+    <!-- Lucide icons CDN and initialization + mobile menu toggle + cards carousel -->
+    <script src="https://cdn.lucide.dev/lucide.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            try { lucide.replace({ width: 32, height: 32 }); } catch (e) { }
+
+            const btn = document.querySelector('.nav-toggle');
+            const nav = document.getElementById('primary-navigation');
+            if (btn && nav) {
+                const closeNav = () => {
+                    btn.setAttribute('aria-expanded', 'false');
+                    btn.classList.remove('open');
+                    nav.classList.remove('show');
+                };
+
+                btn.addEventListener('click', (ev) => {
+                    ev.stopPropagation();
+                    const expanded = btn.getAttribute('aria-expanded') === 'true';
+                    btn.setAttribute('aria-expanded', String(!expanded));
+                    btn.classList.toggle('open');
+                    nav.classList.toggle('show');
+                });
+
+                // close when clicking outside
+                document.addEventListener('click', (e) => {
+                    if (!nav.contains(e.target) && !btn.contains(e.target) && nav.classList.contains('show')) {
+                        closeNav();
+                    }
+                });
+
+                // close on ESC
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape') closeNav();
+                });
+            }
+
+            // Services auto-rotate highlight
+            (function () {
+                const grid = document.querySelector('.services-grid');
+                if (!grid) return;
+                const cards = Array.from(grid.querySelectorAll('.service-card'));
+                if (!cards.length) return;
+
+                let current = cards.findIndex(c => c.classList.contains('is-active'));
+                if (current < 0) current = 0;
+
+                let timer = null;
+                const next = () => {
+                    cards[current].classList.remove('is-active');
+                    current = (current + 1) % cards.length;
+                    cards[current].classList.add('is-active');
+                };
+
+                const start = () => {
+                    stop();
+                    timer = setInterval(next, 6000);
+                };
+                const stop = () => {
+                    if (timer) { clearInterval(timer); timer = null; }
+                };
+
+                grid.addEventListener('mouseenter', stop);
+                grid.addEventListener('mouseleave', start);
+
+                start();
+            })();
+        });
     </script>
 </body>
 
