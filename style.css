@@ -348,6 +348,15 @@ section:nth-of-type(odd) {
     text-align: center;
 }
 
+/* Ensure section headers/titles do not become sticky/fixed unexpectedly */
+.section-header,
+.section-title,
+.section-tag {
+    position: static !important;
+    top: auto !important;
+    z-index: auto !important;
+}
+
 .section-tag {
     font-family: 'Montserrat', sans-serif;
     font-size: 0.78rem;

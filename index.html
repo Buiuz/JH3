@@ -548,7 +548,26 @@
 
             const btn = document.querySelector('.nav-toggle');
             const nav = document.getElementById('primary-navigation');
+            const header = document.querySelector('header');
+            const setHeaderHeight = () => {
+                const h = header ? header.offsetHeight : 80;
+                document.documentElement.style.setProperty('--header-height', h + 'px');
+            };
+            setHeaderHeight();
+            window.addEventListener('resize', setHeaderHeight);
+
             if (btn && nav) {
+                const onScroll = () => {
+                    setHeaderHeight();
+                    if (nav.classList.contains('show')) {
+                        btn.setAttribute('aria-expanded', 'false');
+                        btn.classList.remove('open');
+                        nav.classList.remove('show');
+                    }
+                    if (window.scrollY > 24) header && header.classList.add('header--scrolled');
+                    else header && header.classList.remove('header--scrolled');
+                };
+                window.addEventListener('scroll', onScroll, { passive: true });
                 const closeNav = () => {
                     btn.setAttribute('aria-expanded', 'false');
                     btn.classList.remove('open');
